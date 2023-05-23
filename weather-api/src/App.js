@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import WeatherApp from './components/WeatherApp';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="w-screen h-screen flex justify-center items-center bg-[#e8eaee] py-10">
       <WeatherApp />
     </div>
   );
