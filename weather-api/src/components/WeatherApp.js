@@ -1,5 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
-import { WiHumidity } from 'react-icons/wi';
+import React, { useEffect, useState } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
   geocodeByAddress,
@@ -19,6 +18,7 @@ function WeatherApp() {
       .then((res) => res.json())
       .then((data) => data);
 
+    // function to format the data for easier fetching
     const {
       weather,
       main: { temp, temp_min, temp_max, humidity },
