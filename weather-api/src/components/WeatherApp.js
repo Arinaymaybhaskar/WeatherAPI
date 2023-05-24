@@ -9,8 +9,10 @@ import {
 
 
 function WeatherApp() {
+  // function for the weather Icon
   const iconURL = (iconId) => `https://openweathermap.org/img/wn/${iconId}@2x.png`
 
+  // function to retrieve weather data from the OpenWeather API
   const getFormattedData = async (location, units = 'metric') => {
     const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lng}&appid=305cda710b0e1e995503b7032ebd6617&units=${units}`;
     const data = await fetch(URL)
@@ -40,15 +42,18 @@ function WeatherApp() {
       name
     };
   };
-
+  
+  // function to capitalize the first letter of the weather description
   const capitalize = description => {
     return description.charAt(0).toUpperCase() + description.slice(1);
   }
 
+  // setting initial value to delhi
   const [location, setLocation] = useState('delhi');
   const [units, setUnit] = useState("metric");
   const [weather, setWeather] = useState(null);
 
+  // function to set units by pressing the button 
   const unitType = (u) => {
     const button = u.currentTarget;
     const currentUnit = button.innerText.slice(1)
@@ -67,6 +72,7 @@ function WeatherApp() {
     fetchData();
   }, [units, location]);
 
+  // function to get location by pressing the enter key
   const searchLocation = (p) => {
     if (p.keyCode === 13) {
       setLocation(p.currentTarget.value);
@@ -77,11 +83,13 @@ function WeatherApp() {
 
   // places autocomplete
 
+  // function to set coordinates for the initial value in the openweather api
   const [address, setAddress] = useState("")
   const [coordinates, setCoordinates] = useState({
     lat: '28.6139',
     lng: '77.2090'
   })
+
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
@@ -155,6 +163,7 @@ function WeatherApp() {
           weather && (
             <div id='result' className='flex w-full items-center h-auto gap-4 flex-col lg:flex-row md-flex-row'>
               <div className='flex lg:w-2/3 w-full gap-4 md:flex-row flex-col lg:flex-row h-full'>
+                {/* Weather description, Icon, address*/}
                 <div className='flex flex-col justify-center items-center w-auto lg:w-1/2 md:w-1/2 h-60 bg-[#f2f4f8] rounded-lg' id='main-box'>
                   <div className='w-40 h-40'>
                     <img src={weather.iconURL} className='w-full' alt='weather icon' />
@@ -169,6 +178,7 @@ function WeatherApp() {
                   </div>
                 </div>
                 <div className='flex w-auto lg:w-1/2 md:w-1/2 bg-[#f2f4f8] h-60 rounded-lg p-4'>
+                  {/* Temperature Information */}
                   <div id='Temperature' className='flex flex-col gap-2'>
                     <p className='text-8xl'>{`${weather.temp.toFixed()}°`}
                       <span className='text-3xl'>{`${units === "metric" ? "C" : "F"}`}</span>
@@ -181,6 +191,7 @@ function WeatherApp() {
                 </div>
               </div>
               <div className='flex flex-col md-flex-row  lg:w-1/3 md-w-full w-full h-full max-h-60 gap-4'>
+                {/* Humidity Info */}
                 <div id='humidity' className='w-full rounded-lg p-2 h-[46%] bg-[#f2f4f8] flex'>
                   <img src="./humidity.png" alt="" className='w-auto p-5 h-full' />
                   <p className='text-4xl font-semibold'>
@@ -190,6 +201,7 @@ function WeatherApp() {
                     {`${weather.humidity}%`}
                   </p>
                 </div>
+                {/* Wind Info */}
                 <div id='wind' className='flex rounded-lg h-[46%] bg-[#f2f4f8]'>
                   <img src="./windIcon.png" className='w-auto h-full p-5' alt="" />
                   <div className='flex justify-center flex-col'>
