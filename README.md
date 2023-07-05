@@ -6,7 +6,7 @@ This project uses OpenweatherAPI and Places Autocomplete API by google. It has b
 
 ## Demo
 
-https://weather-mw34jinq6-arinaymaybhaskar.vercel.app/
+https://weather-pznvlyo5j-arinaymaybhaskar.vercel.app/
 
 
 ## Installation
