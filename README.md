@@ -1,7 +1,7 @@
 
 # Weather Api
 
-Weather App for Glaztower Round 1 task. This project uses OpenweatherAPI and Places Autocomplete API by google. It has been deployed on vercel.  
+This project uses OpenweatherAPI and Places Autocomplete API by google. It has been deployed on vercel.  
 
 
 ## Demo
